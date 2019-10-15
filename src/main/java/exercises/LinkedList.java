@@ -39,6 +39,8 @@ public class LinkedList {
     public int get(int index) {
         if (first == null) {
             throw new IndexOutOfBoundsException("List is empty");
+        } else if (index < 0) {
+            throw new IndexOutOfBoundsException("Index must be positive integer value");
         } else {
             int counter = 0;
             Node current = first;
@@ -51,6 +53,20 @@ public class LinkedList {
             } else {
                 throw new IndexOutOfBoundsException("Element beyond length of list");
             }
+        }
+    }
+
+    public int size() {
+        if (first == null) {
+            return 0;
+        } else {
+            int counter = 1;
+            Node current = first;
+            while (current.next != null) {
+                current = current.next;
+                counter++;
+            }
+            return counter;
         }
     }
 }
