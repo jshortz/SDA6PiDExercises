@@ -16,6 +16,10 @@ class Node {
 public class LinkedList {
     Node first = null;
 
+    public LinkedList() {
+        first = null;
+    }
+
     // First method to add an Integer elem to list
     public void add(int elem) {
         if (first == null) { // would mean the list is empty
@@ -33,6 +37,20 @@ public class LinkedList {
     }
 
     public int get(int index) {
-        int counter = 0;
+        if (first == null) {
+            throw new IndexOutOfBoundsException("List is empty");
+        } else {
+            int counter = 0;
+            Node current = first;
+            while (current.next != null && counter < index) {
+                current = current.next;
+                counter++;
+            }
+            if (counter == index) {
+                return current.elem;
+            } else {
+                throw new IndexOutOfBoundsException("Element beyond length of list");
+            }
+        }
     }
 }
